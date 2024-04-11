@@ -1,0 +1,52 @@
+{
+  "name": "trello",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --fix --ext ts,tsx src",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,css,json}\" --log-level silent",
+    "type-check": "tsc --noEmit",
+    "circular-dependencies-check": "npx madge src/**/* -c",
+    "code-quality": "yarn run lint && yarn run prettier && yarn run type-check && yarn run circular-dependencies-check"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.75",
+    "@types/react-dom": "^18.2.24",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "branch-name-lint": "^2.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "husky": "4.3.8",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.8",
+    "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-live-reload": "^3.0.3",
+    "vite-tsconfig-paths": "^4.3.1"
+  }
+}
