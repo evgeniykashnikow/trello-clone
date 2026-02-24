@@ -6,7 +6,7 @@ export const storage = () => {
     localStorage.setItem(type, JSON.stringify(data));
   };
 
-  const getItems = (type: string) => JSON.parse(localStorage.getItem(type) as string);
+  const getStorageItems = (type: string) => JSON.parse(localStorage.getItem(type) as string);
 
   // const addItem = (type: string, items: Array<ColumnItem | CardItem>) => {
   //   localStorage.setItem(type, JSON.stringify(items));
@@ -26,5 +26,5 @@ export const storage = () => {
   //   addItem(type, items);
   // };
 
-  return { getItems, setStorageItems };
+  return { getItems: getStorageItems, setStorageItems };
 };

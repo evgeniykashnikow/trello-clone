@@ -3,11 +3,11 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { Props } from './types';
 
 const ControllerInput: FC<Props> = ({
-                                                     name,
-                                                     defaultValue,
-                                                     fieldType,
-                                                     ...other
-                                                   }) => {
+  name,
+  defaultValue,
+  fieldType,
+  ...other
+}) => {
   const { control } = useFormContext();
 
   return (

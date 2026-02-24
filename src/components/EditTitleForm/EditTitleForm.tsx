@@ -10,12 +10,12 @@ import { FormValues, Props } from './types';
 
 
 const EditTitleForm: FC<Props> = ({
-                                                       handleMenuClose,
-                                                       item,
-                                                       isVisible,
-                                                       submitNotVisible,
-                                                       type
-                                                     }) => {
+  handleMenuClose,
+  item,
+  isVisible,
+  submitNotVisible,
+  type,
+}) => {
   const { setStorageItems } = storage();
   const methods = useForm<FormValues>();
   const { cards, columns } = useItemsContext();
@@ -45,11 +45,15 @@ const EditTitleForm: FC<Props> = ({
         :
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
-            <ControllerInput fieldType="input" name="title" defaultValue={item.title} />
+            <ControllerInput
+              fieldType='input'
+              name='title'
+              defaultValue={item.title}
+            />
 
             {!submitNotVisible &&
               <SubmitButton
-                title="Save"
+                title='Save'
                 reset
                 handleMenuClose={handleMenuClose}
               />

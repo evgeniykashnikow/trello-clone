@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import ControllerInput from 'components/ControllerInput';
 import SubmitButton from 'components/SubmitButton';
@@ -9,7 +9,7 @@ import useMenu from 'hooks/useMenu';
 import { storage } from 'storage/storage';
 import { FormValues, Props } from './types';
 
-const AddItemForm: React.FC<Props> = ({ label, placeholder, columnId }) => {
+const AddItemForm: FC<Props> = ({ label, placeholder, columnId }) => {
   const methods = useForm<FormValues>();
   const { cards, columns } = useItemsContext();
   const { handleMenuOpen, handleMenuClose, isVisible } = useMenu();
