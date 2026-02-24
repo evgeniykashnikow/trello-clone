@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import { FC, useId } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import PlusIcon from 'assets/icons/plus.svg';
 import ControllerInput from 'components/ControllerInput';
-import SubmitButton from 'components/SubmitButton';
+import FormActions from 'components/FormActions';
 import { ITEMSTYPE } from 'constants/constants';
 import { useItemsContext } from 'context/ItemsContext';
 import { useItems } from 'hooks/useItems';
@@ -15,6 +16,7 @@ const AddItemForm: FC<Props> = ({ label, placeholder, columnId }) => {
   const { handleMenuOpen, handleMenuClose, isVisible } = useMenu();
   const { setStorageItems } = storage();
   const { addItem } = useItems();
+  const id = useId();
 
   const handleSetItems = (data: FormValues) => {
     if (columnId) {
@@ -36,8 +38,8 @@ const AddItemForm: FC<Props> = ({ label, placeholder, columnId }) => {
 
   return (
     <div>
-      {isVisible ?
-        <FormProvider {...methods} >
+      {isVisible ? (
+        <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
             <ControllerInput
               fieldType="input"
@@ -47,42 +49,20 @@ const AddItemForm: FC<Props> = ({ label, placeholder, columnId }) => {
               className="outline-none p-3 mt-1 shadow resize-none rounded-md w-full"
             />
 
-            <ControllerInput
-              fieldType="input"
-              type="hidden"
-              name="id"
-              defaultValue={Date.now()}
-            />
+            <ControllerInput fieldType="input" type="hidden" name="id" defaultValue={id} />
 
-            <SubmitButton
-              reset
-              title={label}
-              handleMenuClose={handleMenuClose}
-            />
+            <FormActions reset submitTitle={label} handleClose={handleMenuClose} />
           </form>
         </FormProvider>
-        :
-        <p
+      ) : (
+        <div
           className="flex gap-2 hover:bg-gray-200 transition px-4 py-2 rounded-2xl cursor-pointer"
           onClick={handleMenuOpen}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
+          <img src={PlusIcon} alt="plus icon" className="w-6 h-6" />
           {label}
-        </p>
-      }
+        </div>
+      )}
     </div>
   );
 };

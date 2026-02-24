@@ -10,23 +10,16 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      importPlugin.flatConfigs.recommended,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, importPlugin.flatConfigs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       globals: globals.browser,
     },
     settings: {
-      react: { version: '18' },
+      react: { version: '19' },
       'import/resolver': {
-        node: {
-          paths: ['src'],
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        },
+        typescript: true,
       },
     },
     plugins: {
@@ -41,10 +34,13 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'react/no-unknown-property': ['error', { ignore: ['css'] }],
-      '@typescript-eslint/no-unused-vars': ['warn', {
-        ignoreRestSiblings: true,
-        args: 'none',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          ignoreRestSiblings: true,
+          args: 'none',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'off',
       'import/named': 'off',
       'no-duplicate-imports': 'error',

@@ -1,21 +1,14 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import ControllerInput from 'components/ControllerInput';
-import SubmitButton from 'components/SubmitButton';
+import FormActions from 'components/FormActions';
 import { ITEMSTYPE } from 'constants/constants';
 import { useItemsContext } from 'context/ItemsContext';
 import { useItems } from 'hooks/useItems';
 import { storage } from 'storage/storage';
 import { FormValues, Props } from './types';
 
-
-const EditTitleForm: FC<Props> = ({
-  handleMenuClose,
-  item,
-  isVisible,
-  submitNotVisible,
-  type,
-}) => {
+const EditTitleForm: FC<Props> = ({ handleMenuClose, item, isVisible, submitNotVisible, type }) => {
   const { setStorageItems } = storage();
   const methods = useForm<FormValues>();
   const { cards, columns } = useItemsContext();
@@ -40,27 +33,19 @@ const EditTitleForm: FC<Props> = ({
 
   return (
     <>
-      {!isVisible
-        ? item.title
-        :
+      {!isVisible ? (
+        item.title
+      ) : (
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
-            <ControllerInput
-              fieldType='input'
-              name='title'
-              defaultValue={item.title}
-            />
+            <ControllerInput fieldType="input" name="title" defaultValue={item.title} />
 
-            {!submitNotVisible &&
-              <SubmitButton
-                title='Save'
-                reset
-                handleMenuClose={handleMenuClose}
-              />
-            }
+            {!submitNotVisible && (
+              <FormActions submitTitle="Save" reset handleClose={handleMenuClose} />
+            )}
           </form>
         </FormProvider>
-      }
+      )}
     </>
   );
 };
