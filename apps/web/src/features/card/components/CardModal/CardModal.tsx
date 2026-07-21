@@ -1,0 +1,42 @@
+import { FC, SyntheticEvent } from 'react';
+import { useBoardContext } from '@/features/board/BoardContextUtils';
+import CardDescription from '@/features/card/components/CardDescription/CardDescription';
+import CloseButton from '@/shared/components/CloseButton/CloseButton';
+import { Props } from './types';
+
+const CardModal: FC<Props> = ({ card, isModalVisible, handleModalClose }) => {
+  const { board } = useBoardContext();
+  const column = board.columns.find((col) => col.id === card.columnId);
+
+  const handlePreventClose = (event: SyntheticEvent) => {
+    event.stopPropagation();
+  };
+
+  if (!isModalVisible) {
+    return null;
+  }
+
+  return (
+    <div onClick={handleModalClose} className="absolute inset-0 bg-gray-900/50 w-screen h-screen">
+      <div
+        onClick={handlePreventClose}
+        className="absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white rounded-xl w-[60%] h-[80%] text-black overflow-y-auto"
+      >
+        <div className="flex justify-between">
+          <div>
+            <h1 className="text-2xl">{card.title}</h1>
+            <p>
+              in list <span className="font-bold">{column?.title}</span>
+            </p>
+          </div>
+
+          <CloseButton reset={false} handleClose={handleModalClose} />
+        </div>
+
+        <CardDescription card={card} />
+      </div>
+    </div>
+  );
+};
+
+export default CardModal;
