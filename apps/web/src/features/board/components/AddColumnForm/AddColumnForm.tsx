@@ -23,7 +23,7 @@ const AddColumnForm: FC<Props> = ({ handleClose }) => {
   return (
     <FormProvider {...methods}>
       <form
-        className="bg-[#f5f5dc] rounded-xl p-2 h-max w-[272px] shrink-0 shadow"
+        className="bg-[#f1f2f4] rounded-xl p-2 h-max w-68 shrink-0 shadow"
         onSubmit={methods.handleSubmit(handleOnSubmit)}
       >
         <InputController

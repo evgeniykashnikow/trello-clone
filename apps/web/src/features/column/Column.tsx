@@ -23,7 +23,7 @@ const Column: FC<Props> = ({ title, id, tasks }) => {
 
   return drop(
     <div>
-      <UiCard className="w-[272px] shrink-0 bg-[#f5f5dc] text-neutral-900">
+      <UiCard className="w-68 shrink-0 bg-[#f1f2f4] text-neutral-900">
         <CardHeader className="p-2 pb-1">
           <CardTitle>
             {isVisible ? (

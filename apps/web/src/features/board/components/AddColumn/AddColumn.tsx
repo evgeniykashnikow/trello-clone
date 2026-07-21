@@ -10,7 +10,7 @@ const AddColumn: FC = () => {
     <AddColumnForm handleClose={handleMenuClose} />
   ) : (
     <AddItemButton
-      className="w-[272px] shrink-0 bg-white/30 hover:bg-white/40 text-white px-3"
+      className="w-68 shrink-0 bg-black/30 hover:bg-black/40 text-white px-3"
       label="Add a column"
       handleMenuOpen={handleMenuOpen}
     />
