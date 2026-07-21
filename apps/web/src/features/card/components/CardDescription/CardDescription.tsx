@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import FormActions from '@/components/FormActions/FormActions';
+import { Textarea } from '@/components/ui/textarea';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
-import FormActions from '@/shared/components/FormActions/FormActions';
-import useMenu from '@/shared/hooks/useMenu';
-import { Textarea } from '@/shared/ui/textarea';
+import useMenu from '@/hooks/useMenu';
 import { FormValues, Props } from './types';
 
 const CardDescription: FC<Props> = ({ card }) => {

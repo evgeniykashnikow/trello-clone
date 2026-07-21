@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Board, Card } from '@trello/shared';
 import { AddCardParams, AddColumnParams } from '@/features/board/BoardContextUtils';
-import { generateId } from '@/shared/utils/generateId';
+import { generateId } from '@/utils/generateId';
 
 const LOCAL_STORAGE_KEY = 'trello_board';
 

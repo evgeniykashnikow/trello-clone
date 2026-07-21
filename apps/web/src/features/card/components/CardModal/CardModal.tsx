@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent } from 'react';
+import CloseButton from '@/components/CloseButton/CloseButton';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
 import CardDescription from '@/features/card/components/CardDescription/CardDescription';
-import CloseButton from '@/shared/components/CloseButton/CloseButton';
 import { Props } from './types';
 
 const CardModal: FC<Props> = ({ card, isModalVisible, handleModalClose }) => {

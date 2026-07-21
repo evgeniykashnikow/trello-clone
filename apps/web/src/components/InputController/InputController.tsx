@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { useController } from 'react-hook-form';
-import { cn } from '@/shared/lib/utils';
-import { Input } from '@/shared/ui/input';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 import { Props } from './types';
 
 const InputController = forwardRef<HTMLInputElement, Props>(({ name, ...other }, ref) => {

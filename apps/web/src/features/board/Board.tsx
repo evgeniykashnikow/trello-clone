@@ -8,8 +8,8 @@ const Board: FC = () => {
   const { columns } = board;
 
   return (
-    <div className="bg-[url('assets/background.jpg')] bg-no-repeat h-screen p-12">
-      <div className="flex gap-8 items-start">
+    <div className="bg-[url('assets/background.jpg')] bg-cover bg-center h-screen p-3">
+      <div className="flex gap-2 items-start overflow-x-auto h-full">
         {columns &&
           columns.map((column) => (
             <Column key={column.id} title={column.title} id={column.id} tasks={column.tasks} />

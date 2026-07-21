@@ -1,7 +1,7 @@
 import { useDrag } from 'react-dnd';
+import { DROP_TYPES } from '@/constants/dropTypes';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
 import { DropResult } from '@/features/card/types';
-import { DROP_TYPES } from '@/shared/constants/dropTypes';
 
 export const useDragCard = (columnId: string, id: string) => {
   const { moveCard } = useBoardContext();

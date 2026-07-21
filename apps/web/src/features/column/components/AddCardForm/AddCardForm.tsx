@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import FormActions from '@/components/FormActions/FormActions';
+import InputController from '@/components/InputController/InputController';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
-import FormActions from '@/shared/components/FormActions/FormActions';
-import InputController from '@/shared/components/InputController/InputController';
 import { FormValues, Props } from './types';
 import { defaultValues } from './utils';
 
@@ -23,7 +23,11 @@ const AddCardForm: FC<Props> = ({ columnId, handleClose }) => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
-        <InputController name="title" placeholder="Enter card title" className="px-2 py-1" />
+        <InputController
+          name="title"
+          placeholder="Enter card title"
+          className="bg-white shadow-sm px-3 py-2"
+        />
 
         <FormActions reset submitTitle="Add card" handleClose={handleClose} />
       </form>

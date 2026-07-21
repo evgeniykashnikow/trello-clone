@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import AddItemButton from '@/components/AddItemButton/AddItemButton';
 import AddCardForm from '@/features/column/components/AddCardForm/AddCardForm';
-import AddItemButton from '@/shared/components/AddItemButton/AddItemButton';
-import useMenu from '@/shared/hooks/useMenu';
+import useMenu from '@/hooks/useMenu';
 import { Props } from './types';
 
 const AddCard: FC<Props> = ({ columnId }) => {

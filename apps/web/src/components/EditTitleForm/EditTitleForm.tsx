@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import FormActions from '@/shared/components/FormActions/FormActions';
-import InputController from '@/shared/components/InputController/InputController';
-import { useClickOutside } from '@/shared/hooks/useClickOutside';
+import FormActions from '@/components/FormActions/FormActions';
+import InputController from '@/components/InputController/InputController';
+import { useClickOutside } from '@/hooks/useClickOutside';
 import { FormValues, Props } from './types';
 
 const EditTitleForm: FC<Props> = ({

@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { useDrop } from 'react-dnd';
+import EditTitleForm from '@/components/EditTitleForm/EditTitleForm';
+import { CardContent, CardHeader, CardTitle, Card as UiCard } from '@/components/ui/card';
+import { DROP_TYPES } from '@/constants/dropTypes';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
 import Card from '@/features/card/Card';
 import AddCard from '@/features/column/AddCard/AddCard';
 import { Props } from '@/features/column/types';
-import EditTitleForm from '@/shared/components/EditTitleForm/EditTitleForm';
-import { DROP_TYPES } from '@/shared/constants/dropTypes';
-import useMenu from '@/shared/hooks/useMenu';
-import { CardContent, CardHeader, CardTitle, Card as UiCard } from '@/shared/ui/card';
+import useMenu from '@/hooks/useMenu';
 
 const Column: FC<Props> = ({ title, id, tasks }) => {
   const { handleMenuOpen, handleMenuClose, isVisible } = useMenu();
@@ -23,8 +23,8 @@ const Column: FC<Props> = ({ title, id, tasks }) => {
 
   return drop(
     <div>
-      <UiCard className="w-64">
-        <CardHeader>
+      <UiCard className="w-[272px] shrink-0 bg-[#f5f5dc] text-neutral-900">
+        <CardHeader className="p-2 pb-1">
           <CardTitle>
             {isVisible ? (
               <EditTitleForm
@@ -36,7 +36,7 @@ const Column: FC<Props> = ({ title, id, tasks }) => {
               />
             ) : (
               <p
-                className="border border-transparent cursor-pointer p-1 text-sm"
+                className="cursor-pointer px-2 py-1 text-sm font-semibold"
                 onClick={handleMenuOpen}
               >
                 {title}
@@ -44,7 +44,7 @@ const Column: FC<Props> = ({ title, id, tasks }) => {
             )}
           </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-2 pt-0">
           {tasks && tasks.map((card) => <Card card={card} key={card.id} />)}
           <AddCard columnId={id} />
         </CardContent>

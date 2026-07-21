@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import FormActions from '@/components/FormActions/FormActions';
+import InputController from '@/components/InputController/InputController';
 import { useBoardContext } from '@/features/board/BoardContextUtils';
-import FormActions from '@/shared/components/FormActions/FormActions';
-import InputController from '@/shared/components/InputController/InputController';
 import { FormValues, Props } from './types';
 import { defaultValues } from './utils';
 
@@ -23,10 +23,14 @@ const AddColumnForm: FC<Props> = ({ handleClose }) => {
   return (
     <FormProvider {...methods}>
       <form
-        className="bg-white hover:bg-gray-100 transition rounded-2xl p-4 h-max w-64 shadow"
+        className="bg-[#f5f5dc] rounded-xl p-2 h-max w-[272px] shrink-0 shadow"
         onSubmit={methods.handleSubmit(handleOnSubmit)}
       >
-        <InputController name="title" placeholder="Enter column title" />
+        <InputController
+          name="title"
+          placeholder="Enter column title"
+          className="bg-white shadow-sm px-3 py-2"
+        />
         <FormActions reset submitTitle="Add column" handleClose={handleClose} />
       </form>
     </FormProvider>
