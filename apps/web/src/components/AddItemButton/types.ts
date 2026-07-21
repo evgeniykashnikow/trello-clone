@@ -1,5 +1,5 @@
 export type Props = {
   label: string;
-  handleMenuOpen: () => void;
+  handleOpen: () => void;
   className?: string;
 };

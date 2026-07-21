@@ -1,24 +1,12 @@
 import { FC } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider } from 'react-hook-form';
 import FormActions from '@/components/FormActions/FormActions';
 import InputController from '@/components/InputController/InputController';
-import { useBoardContext } from '@/features/board/BoardContextUtils';
-import { FormValues, Props } from './types';
-import { defaultValues } from './utils';
+import { Props } from './types';
+import { useAddColumnForm } from './useAddColumnForm';
 
 const AddColumnForm: FC<Props> = ({ handleClose }) => {
-  const methods = useForm<FormValues>({
-    defaultValues,
-  });
-  const { addColumn } = useBoardContext();
-
-  const handleOnSubmit = (data: FormValues) => {
-    if (data.title) {
-      addColumn(data);
-      handleClose();
-      methods.reset();
-    }
-  };
+  const { methods, handleOnSubmit } = useAddColumnForm({ handleClose });
 
   return (
     <FormProvider {...methods}>

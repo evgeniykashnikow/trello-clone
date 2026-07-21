@@ -1,8 +1,8 @@
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 import { boardRoutes } from './routes/board.js';
-import { cardRoutes } from './routes/cards.js';
 import { columnRoutes } from './routes/columns.js';
+import { taskRoutes } from './routes/tasks.js';
 
 const app = Fastify({ logger: true });
 
@@ -12,7 +12,7 @@ app.get('/api/health', async () => ({ status: 'ok' }));
 
 await app.register(boardRoutes, { prefix: '/api' });
 await app.register(columnRoutes, { prefix: '/api' });
-await app.register(cardRoutes, { prefix: '/api' });
+await app.register(taskRoutes, { prefix: '/api' });
 
 const port = Number(process.env.PORT ?? 3000);
 

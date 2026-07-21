@@ -6,7 +6,7 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 import { FormValues, Props } from './types';
 
 const EditTitleForm: FC<Props> = ({
-  handleMenuClose,
+  handleClose,
   title,
   onSave,
   onOpen,
@@ -23,7 +23,7 @@ const EditTitleForm: FC<Props> = ({
   const handleOnSubmit = (data: FormValues) => {
     if (data.title) {
       onSave(data.title);
-      handleMenuClose();
+      handleClose();
     }
   };
 
@@ -33,13 +33,13 @@ const EditTitleForm: FC<Props> = ({
     }
   }, [onOpen]);
 
-  useClickOutside(formRef, handleMenuClose);
+  useClickOutside(formRef, handleClose);
 
   return (
     <FormProvider {...methods}>
       <form ref={formRef} onSubmit={methods.handleSubmit(handleOnSubmit)}>
         <InputController ref={inputRef} name="title" className="bg-transparent p-1 h-max" />
-        {showActions && <FormActions reset submitTitle="Save" handleClose={handleMenuClose} />}
+        {showActions && <FormActions reset submitTitle="Save" handleClose={handleClose} />}
       </form>
     </FormProvider>
   );

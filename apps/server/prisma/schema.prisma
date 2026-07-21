@@ -20,12 +20,12 @@ model Column {
   position Int
   board    Board  @relation(fields: [boardId], references: [id], onDelete: Cascade)
   boardId  String
-  cards    Card[]
+  tasks    Task[]
 
   @@index([boardId])
 }
 
-model Card {
+model Task {
   id          String  @id @default(uuid())
   title       String
   description String?

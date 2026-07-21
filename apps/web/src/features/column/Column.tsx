@@ -1,52 +1,37 @@
 import { FC } from 'react';
-import { useDrop } from 'react-dnd';
 import EditTitleForm from '@/components/EditTitleForm/EditTitleForm';
 import { CardContent, CardHeader, CardTitle, Card as UiCard } from '@/components/ui/card';
-import { DROP_TYPES } from '@/constants/dropTypes';
-import { useBoardContext } from '@/features/board/BoardContextUtils';
-import Card from '@/features/card/Card';
-import AddCard from '@/features/column/AddCard/AddCard';
+import AddTask from '@/features/column/components/AddTask/AddTask';
 import { Props } from '@/features/column/types';
-import useMenu from '@/hooks/useMenu';
+import { useColumn } from '@/features/column/useColumn';
+import Task from '@/features/task/Task';
 
 const Column: FC<Props> = ({ title, id, tasks }) => {
-  const { handleMenuOpen, handleMenuClose, isVisible } = useMenu();
-  const { updateColumnTitle } = useBoardContext();
-  const [, drop] = useDrop({
-    accept: DROP_TYPES.CARD,
-    drop: () => ({ id }),
-  });
-
-  const handleUpdateColumnTitle = (newTitle: string) => {
-    updateColumnTitle(id, newTitle);
-  };
+  const { handleUpdateColumnTitle, handleOpen, handleClose, open, drop } = useColumn(id);
 
   return drop(
     <div>
       <UiCard className="w-68 shrink-0 bg-[#f1f2f4] text-neutral-900">
         <CardHeader className="p-2 pb-1">
           <CardTitle>
-            {isVisible ? (
+            {open ? (
               <EditTitleForm
-                onOpen={handleMenuOpen}
+                onOpen={handleOpen}
                 showActions={false}
                 title={title}
-                handleMenuClose={handleMenuClose}
+                handleClose={handleClose}
                 onSave={handleUpdateColumnTitle}
               />
             ) : (
-              <p
-                className="cursor-pointer px-2 py-1 text-sm font-semibold"
-                onClick={handleMenuOpen}
-              >
+              <p className="cursor-pointer px-2 py-1 text-sm font-semibold" onClick={handleOpen}>
                 {title}
               </p>
             )}
           </CardTitle>
         </CardHeader>
         <CardContent className="p-2 pt-0">
-          {tasks && tasks.map((card) => <Card card={card} key={card.id} />)}
-          <AddCard columnId={id} />
+          {tasks && tasks.map((task) => <Task task={task} key={task.id} />)}
+          <AddTask columnId={id} />
         </CardContent>
       </UiCard>
     </div>,

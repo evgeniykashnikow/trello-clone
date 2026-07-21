@@ -1,7 +1,7 @@
-import { Card } from './card';
+import { Task } from './task';
 
 export type Column = {
   id: string;
   title: string;
-  tasks: Card[];
+  tasks: Task[];
 };

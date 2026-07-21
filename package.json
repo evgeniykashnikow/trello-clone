@@ -7,10 +7,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "yarn workspace @trello/web dev",
+    "dev": "concurrently -n web,server -c blue,green \"yarn workspace @trello/web dev\" \"yarn workspace @trello/server dev\"",
+    "dev:web": "yarn workspace @trello/web dev",
+    "dev:server": "yarn workspace @trello/server dev",
     "build": "yarn workspace @trello/web build",
     "lint": "yarn workspace @trello/web lint",
     "type-check": "yarn workspace @trello/web type-check",
     "code-quality": "yarn workspace @trello/web code-quality"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
   }
 }
