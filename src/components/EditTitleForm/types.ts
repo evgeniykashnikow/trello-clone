@@ -1,13 +1,11 @@
-import { CardItem, ColumnItem } from 'storage/models';
-
 export type Props = {
-  handleMenuClose: () => void,
-  isVisible: boolean,
-  item: CardItem | ColumnItem,
-  type: string
-  submitNotVisible?: boolean
-}
+  handleMenuClose: () => void;
+  title: string;
+  showActions?: boolean;
+  onOpen?: () => void;
+  columnId?: string;
+};
 
 export type FormValues = {
-  title: string
-}
+  title: string;
+};

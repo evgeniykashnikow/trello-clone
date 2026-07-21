@@ -1,11 +1,8 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { FormValues } from 'components/CardModal/types';
-import ControllerInput from 'components/ControllerInput';
-import FormActions from 'components/FormActions';
-import { ITEMSTYPE } from 'constants/constants';
-import { useItems } from 'hooks/useItems';
-import useMenu from 'hooks/useMenu';
+import FormActions from '@/components/FormActions';
+import InputController from '@/components/InputController';
+import useMenu from '@/hooks/useMenu';
 import { Props } from './types';
 
 const CardDescription: FC<Props> = ({ card }) => {
@@ -33,7 +30,7 @@ const CardDescription: FC<Props> = ({ card }) => {
       ) : (
         <FormProvider {...methods}>
           <form className="max-w-lg mt-2" onSubmit={methods.handleSubmit(handleOnSubmit)}>
-            <ControllerInput
+            <InputController
               fieldType="textarea"
               name="description"
               defaultValue={card.description || ''}

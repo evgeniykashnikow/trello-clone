@@ -10,16 +10,29 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended, importPlugin.flatConfigs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      importPlugin.flatConfigs.recommended,
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       globals: globals.browser,
     },
     settings: {
-      react: { version: '19' },
+      react: { version: 'detect' },
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
       'import/resolver': {
-        typescript: true,
+        typescript: {
+          project: './tsconfig.json',
+          alwaysTryTypes: true,
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
       },
     },
     plugins: {
@@ -70,21 +83,6 @@ export default tseslint.config(
           pathGroups: [
             {
               pattern: 'react*',
-              group: 'external',
-              position: 'before',
-            },
-            {
-              pattern: 'antd',
-              group: 'external',
-              position: 'before',
-            },
-            {
-              pattern: '@ant-design*',
-              group: 'external',
-              position: 'before',
-            },
-            {
-              pattern: '@emotion*',
               group: 'external',
               position: 'before',
             },

@@ -14,13 +14,18 @@
     "code-quality": "yarn run lint && yarn run prettier && yarn run type-check && yarn run circular-dependencies-check"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/postcss": "^4.2.1",
     "@tailwindcss/vite": "^4.2.1",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.575.0",
     "react": "^19.2.4",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.2.4",
-    "react-hook-form": "^7.71.2"
+    "react-hook-form": "^7.71.2",
+    "shadcn": "^3.8.5",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
