@@ -10,7 +10,7 @@ const AddTask: FC<Props> = ({ columnId }) => {
   return open ? (
     <AddTaskForm columnId={columnId} handleClose={handleClose} />
   ) : (
-    <AddItemButton label="Add a card" handleOpen={handleOpen} />
+    <AddItemButton label="Add a task" handleOpen={handleOpen} />
   );
 };
 export default AddTask;

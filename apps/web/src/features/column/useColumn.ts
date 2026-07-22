@@ -7,7 +7,7 @@ export const useColumn = (id: string) => {
   const { handleOpen, handleClose, open } = useOpen();
   const { updateColumnTitleMutation } = useApi();
   const [, drop] = useDrop({
-    accept: DROP_TYPES.CARD,
+    accept: DROP_TYPES.TASK,
     drop: () => ({ id }),
   });
 

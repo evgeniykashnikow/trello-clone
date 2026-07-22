@@ -1,4 +1,4 @@
 export const DROP_TYPES = {
-  CARD: 'CARD',
+  TASK: 'TASK',
   COLUMN: 'COLUMN',
 };

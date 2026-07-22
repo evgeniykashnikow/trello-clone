@@ -25,11 +25,11 @@ const AddTaskForm: FC<Props> = ({ columnId, handleClose }) => {
       <form onSubmit={methods.handleSubmit(handleOnSubmit)}>
         <InputController
           name="title"
-          placeholder="Enter card title"
+          placeholder="Enter task title"
           className="bg-white shadow-sm px-3 py-2"
         />
 
-        <FormActions reset submitTitle="Add card" handleClose={handleClose} />
+        <FormActions reset submitTitle="Add task" handleClose={handleClose} />
       </form>
     </FormProvider>
   );

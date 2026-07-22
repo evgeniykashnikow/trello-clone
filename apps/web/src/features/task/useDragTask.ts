@@ -8,7 +8,7 @@ export const useDragTask = (columnId: string, id: string) => {
 
   const [{ isDragging }, drag] = useDrag({
     item: { id },
-    type: DROP_TYPES.CARD,
+    type: DROP_TYPES.TASK,
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult<DropResult>();
       if (dropResult && dropResult.id !== columnId) {
